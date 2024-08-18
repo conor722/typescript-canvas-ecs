@@ -1,8 +1,8 @@
-const canvas = <HTMLCanvasElement>document.getElementById("tutorial");
-const ctx = canvas.getContext("2d");
+import { Position, Render } from "./systems";
 
-ctx.fillStyle = "rgb(200 0 0)";
-ctx.fillRect(10, 10, 50, 50);
+const entity = 1;
 
-ctx.fillStyle = "rgb(0 0 200 / 50%)";
-ctx.fillRect(30, 30, 50, 50);
+Position.register(entity, { x: 0, y: 0, z: 0 });
+Render.register(entity, "images/man.jpg");
+
+Render.processComponents(1);
