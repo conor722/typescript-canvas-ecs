@@ -1,12 +1,11 @@
-import System from "../system";
+import System from '../system';
 
 type PositionComponent = {
-    x: number,
-    y: number,
-    z: number,
-}
+  x: number;
+  y: number;
+  z: number;
+};
 
-class Position extends System<PositionComponent> {
-}
+class Position extends System<PositionComponent> {}
 
 export default new Position();
