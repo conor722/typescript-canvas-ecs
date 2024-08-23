@@ -1,11 +1,7 @@
 import Position from "../position";
 import Velocity from ".";
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
-beforeEach(() => {
-    Position.components.clear();
-    Velocity.components.clear();
-})
 
 describe("Velocity", () => {
     it('processes change of an entities position based on its velocity component', () => {
