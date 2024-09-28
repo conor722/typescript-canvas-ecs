@@ -1,5 +1,5 @@
 import System from '../system';
-import Position from '../position';
+import Position, { PositionComponent } from '../position';
 
 class ImageLoadWrapper {
   image: HTMLImageElement;
@@ -35,11 +35,17 @@ type ImageComponent = string;
 class Render extends System<ImageComponent> {
   imageLoader: ImageLoader = new ImageLoader();
 
-  render(image: HTMLImageElement, position: Vector3d) {
+  render(image: HTMLImageElement, position: PositionComponent) {
     const canvas = <HTMLCanvasElement>document.getElementById('tutorial');
     const ctx = canvas.getContext('2d');
 
-    ctx.drawImage(image, position.x, position.y);
+    ctx.save();
+
+    ctx.translate(position.x, position.y);
+    ctx.rotate(position.angle);
+    ctx.drawImage(image, -(position.width / 2), -(position.height / 2));
+
+    ctx.restore();
   }
 
   register(entityId: number, component: ImageComponent): void {

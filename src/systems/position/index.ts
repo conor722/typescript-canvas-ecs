@@ -1,9 +1,11 @@
 import System from '../system';
 
-type PositionComponent = {
+export type PositionComponent = {
   x: number;
   y: number;
   z: number;
+  width: number;
+  height: number;
   angle: number;
 };
 
