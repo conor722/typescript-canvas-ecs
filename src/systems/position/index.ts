@@ -4,6 +4,7 @@ type PositionComponent = {
   x: number;
   y: number;
   z: number;
+  angle: number;
 };
 
 class Position extends System<PositionComponent> {}

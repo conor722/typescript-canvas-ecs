@@ -10,7 +10,7 @@ body.appendChild(canvas);
 
 const entity = 1;
 
-Position.register(entity, { x: 0, y: 0, z: 0 });
+Position.register(entity, { x: 0, y: 0, z: 0, angle: 0 });
 Render.register(entity, Pic);
 Velocity.register(entity, { x: 0.3, y: 0, z: 0 });
 
