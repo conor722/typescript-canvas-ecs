@@ -1,6 +1,7 @@
-import { Position, Render, RigidBox2D } from './systems';
+import { InitScript, Position, Render, RigidBox2D } from './systems';
 import Pic from '../images/man.jpg';
 import Ground from '../images/wood.jpg';
+import { Body } from 'matter-js';
 
 const body = document.body;
 const canvas = document.createElement('canvas');
@@ -20,7 +21,18 @@ Position.register(entity, {
   angle: 0
 });
 Render.register(entity, Pic);
-RigidBox2D.register(entity, {});
+RigidBox2D.register(entity, { density: 0.15 });
+InitScript.register(entity, (entityId) => {
+  document.body.onkeyup = function (e) {
+    console.log({ e });
+    e.preventDefault();
+
+    if (e.key == ' ' || e.code == 'Space' || e.keyCode == 32) {
+      const body = RigidBox2D.bodies.get(entityId);
+      Body.applyForce(body, body.position, { x: 0, y: -200000 });
+    }
+  };
+});
 // Velocity.register(entity, { x: 0.3, y: 0, z: 0 });
 
 const ground = 2;

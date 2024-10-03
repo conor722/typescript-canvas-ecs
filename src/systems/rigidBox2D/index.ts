@@ -16,7 +16,7 @@ class RigidBox2D extends System<RigidBody2DComponent> {
 
   addToWorld(body: Body) {
     if (!this.engine) {
-      this.engine = Engine.create({ gravity: { y: 100 } });
+      this.engine = Engine.create({ gravity: { y: 400 } });
     }
 
     Composite.add(this.engine.world, body);
@@ -51,7 +51,6 @@ class RigidBox2D extends System<RigidBody2DComponent> {
     Engine.update(this.engine, timedelta);
 
     for (const [entityId, body] of this.bodies) {
-      console.log({ body });
       const position = Position.components.get(entityId);
       position.x = body.position.x;
       position.y = body.position.y;

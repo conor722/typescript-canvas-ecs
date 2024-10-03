@@ -19,8 +19,6 @@ class Velocity extends System<VelocityComponent> {
       position.x += timedelta * velocity.x;
       position.y += timedelta * velocity.y;
       position.z += timedelta * velocity.z;
-
-      console.log({ position });
     }
   }
 }
