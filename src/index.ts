@@ -1,4 +1,11 @@
-import { InitScript, Position, Picture, RigidBox2D, Text } from './systems';
+import {
+  InitScript,
+  Position,
+  Picture,
+  RigidBox2D,
+  Text,
+  Fill
+} from './systems';
 import Pic from '../images/man.jpg';
 import Ground from '../images/wood.jpg';
 import { Body } from 'matter-js';
@@ -61,6 +68,18 @@ Position.register(text, {
   angle: 0.5
 });
 
+const square = 'square';
+
+Position.register(square, {
+  x: 240,
+  y: 40,
+  z: 0,
+  width: 100,
+  height: 100,
+  angle: 0
+});
+Fill.register(square, 'cyan');
+
 Picture.processComponents(1);
 
 let prevTime: number;
@@ -78,6 +97,7 @@ const step = (timeStamp: number) => {
   //Velocity.processComponents(timeDelta);
   Picture.processComponents(timeDelta);
   Text.processComponents();
+  Fill.processComponents();
 
   prevTime = timeStamp;
 
