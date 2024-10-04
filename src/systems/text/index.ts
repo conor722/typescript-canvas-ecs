@@ -4,6 +4,8 @@ import System from '../system';
 
 type TextComponent = {
   text: string;
+  size?: number;
+  fontType?: string;
 };
 
 class Text extends System<TextComponent> {
@@ -13,18 +15,18 @@ class Text extends System<TextComponent> {
 
       const ctx = getContext();
 
-      ctx.font = '48px serif';
+      const { size = 32, fontType = 'Verdana', text } = component;
+
+      const font = `${size}px ${fontType}`;
+
+      ctx.font = font;
 
       ctx.save();
 
       ctx.translate(position.x, position.y);
       ctx.rotate(position.angle);
 
-      ctx.fillText(
-        component.text,
-        -(position.width / 2),
-        -(position.height / 2)
-      );
+      ctx.fillText(text, -(position.width / 2), -(position.height / 2));
 
       ctx.restore();
     }
