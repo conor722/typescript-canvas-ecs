@@ -1,5 +1,6 @@
 import System from '../system';
 import Position, { PositionComponent } from '../position';
+import { getContext } from '../../context';
 
 class ImageLoadWrapper {
   image: HTMLImageElement;
@@ -37,7 +38,7 @@ class Picture extends System<ImageComponent> {
 
   render(image: HTMLImageElement, position: PositionComponent) {
     const canvas = <HTMLCanvasElement>document.getElementById('tutorial');
-    const ctx = canvas.getContext('2d');
+    const ctx = getContext();
 
     ctx.save();
 

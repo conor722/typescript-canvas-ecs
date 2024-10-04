@@ -9,13 +9,9 @@ import {
 import Pic from '../images/man.jpg';
 import Ground from '../images/wood.jpg';
 import { Body } from 'matter-js';
+import { createContext, getContext } from './context';
 
-const body = document.body;
-const canvas = document.createElement('canvas');
-canvas.height = 500;
-canvas.width = 500;
-canvas.id = 'tutorial';
-body.appendChild(canvas);
+createContext();
 
 const entity = 'entity';
 
@@ -35,6 +31,7 @@ InitScript.register(entity, (entityId) => {
     e.preventDefault();
 
     if (e.key == ' ' || e.code == 'Space' || e.keyCode == 32) {
+      e.preventDefault();
       const body = RigidBox2D.bodies.get(entityId);
       Body.applyForce(body, body.position, { x: 0, y: -200000 });
       Text.components.get(text).text = 'You have jumped';
@@ -90,8 +87,8 @@ const step = (timeStamp: number) => {
   }
   const timeDelta = (timeStamp - prevTime) / 100;
 
-  const context = canvas.getContext('2d');
-  context.clearRect(0, 0, canvas.width, canvas.height);
+  const context = getContext();
+  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
   RigidBox2D.processComponents(timeDelta);
   //Velocity.processComponents(timeDelta);

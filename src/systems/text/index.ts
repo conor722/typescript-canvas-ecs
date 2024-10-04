@@ -1,4 +1,5 @@
 import { Position } from '..';
+import { getContext } from '../../context';
 import System from '../system';
 
 type TextComponent = {
@@ -10,8 +11,7 @@ class Text extends System<TextComponent> {
     for (const [entityId, component] of this.components) {
       const position = Position.components.get(entityId);
 
-      const canvas = <HTMLCanvasElement>document.getElementById('tutorial');
-      const ctx = canvas.getContext('2d');
+      const ctx = getContext();
 
       ctx.font = '48px serif';
 
