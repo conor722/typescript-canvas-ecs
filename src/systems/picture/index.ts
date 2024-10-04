@@ -32,7 +32,7 @@ class ImageLoader {
 
 type ImageComponent = string;
 
-class Render extends System<ImageComponent> {
+class Picture extends System<ImageComponent> {
   imageLoader: ImageLoader = new ImageLoader();
 
   render(image: HTMLImageElement, position: PositionComponent) {
@@ -69,4 +69,4 @@ class Render extends System<ImageComponent> {
   }
 }
 
-export default new Render();
+export default new Picture();

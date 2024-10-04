@@ -1,4 +1,4 @@
-import { InitScript, Position, Render, RigidBox2D, Text } from './systems';
+import { InitScript, Position, Picture, RigidBox2D, Text } from './systems';
 import Pic from '../images/man.jpg';
 import Ground from '../images/wood.jpg';
 import { Body } from 'matter-js';
@@ -20,7 +20,7 @@ Position.register(entity, {
   height: 250,
   angle: 0
 });
-Render.register(entity, Pic);
+Picture.register(entity, Pic);
 RigidBox2D.register(entity, { density: 0.15 });
 InitScript.register(entity, (entityId) => {
   document.body.onkeyup = function (e) {
@@ -46,7 +46,7 @@ Position.register(ground, {
   height: 360,
   angle: 0
 });
-Render.register(ground, Ground);
+Picture.register(ground, Ground);
 RigidBox2D.register(ground, { isStatic: true });
 
 const text = 'text';
@@ -61,7 +61,7 @@ Position.register(text, {
   angle: 0.5
 });
 
-Render.processComponents(1);
+Picture.processComponents(1);
 
 let prevTime: number;
 
@@ -76,7 +76,7 @@ const step = (timeStamp: number) => {
 
   RigidBox2D.processComponents(timeDelta);
   //Velocity.processComponents(timeDelta);
-  Render.processComponents(timeDelta);
+  Picture.processComponents(timeDelta);
   Text.processComponents();
 
   prevTime = timeStamp;
