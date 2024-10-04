@@ -48,7 +48,7 @@ class Render extends System<ImageComponent> {
     ctx.restore();
   }
 
-  register(entityId: number, component: ImageComponent): void {
+  register(entityId: EntityId, component: ImageComponent): void {
     this.imageLoader.new(component);
     this.components.set(entityId, component);
   }

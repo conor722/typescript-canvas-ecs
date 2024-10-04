@@ -1,4 +1,4 @@
-type EntityId = number;
+type EntityId = string;
 
 type Vector3d = {
   x: number;

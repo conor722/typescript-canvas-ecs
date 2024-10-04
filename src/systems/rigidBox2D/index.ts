@@ -38,6 +38,7 @@ class RigidBox2D extends System<RigidBody2DComponent> {
       position.height,
       {
         angle: position.angle,
+        label: entityId,
         ...component
       }
     );

@@ -4,7 +4,7 @@ import { describe, it, expect } from 'vitest';
 
 describe('Velocity', () => {
   it('processes change of an entities position based on its velocity component', () => {
-    const entityId = 1;
+    const entityId = 'entity';
     const position = { x: 0, y: 0, z: 0, width: 10, height: 10, angle: 0 };
     const velocity = { x: 1, y: 0, z: 0, width: 10, height: 10, angle: 0 };
 
@@ -24,7 +24,7 @@ describe('Velocity', () => {
   });
 
   it('processes change of an entities position based on its velocity component (negative velocity)', () => {
-    const entityId = 1;
+    const entityId = 'entity';
     const position = { x: 0, y: 0, z: 0, width: 10, height: 10, angle: 0 };
     const velocity = { x: -1, y: 0, z: 0, width: 10, height: 10, angle: 0 };
 
@@ -44,7 +44,7 @@ describe('Velocity', () => {
   });
 
   it('processes change of an entities position based on its velocity component (velocity in all directions)', () => {
-    const entityId = 1;
+    const entityId = 'entity';
     const position = { x: 0, y: 0, z: 0, width: 10, height: 10, angle: 0 };
     const velocity = { x: -1, y: 1, z: 2, width: 10, height: 10, angle: 0 };
 
@@ -64,7 +64,7 @@ describe('Velocity', () => {
   });
 
   it('processes change of an entities position based on its velocity component (timedelta less than 1)', () => {
-    const entityId = 1;
+    const entityId = 'entity';
     const position = { x: 0, y: 0, z: 0, width: 10, height: 10, angle: 0 };
     const velocity = { x: -1, y: 1, z: 2, width: 10, height: 10, angle: 0 };
 
@@ -84,7 +84,7 @@ describe('Velocity', () => {
   });
 
   it('ignores components with no velocity component', () => {
-    const entityId = 1;
+    const entityId = 'entity';
     const position = { x: 0, y: 0, z: 0, width: 10, height: 10, angle: 0 };
 
     Position.register(entityId, position);

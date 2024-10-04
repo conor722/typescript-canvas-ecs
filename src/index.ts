@@ -10,7 +10,7 @@ canvas.width = 500;
 canvas.id = 'tutorial';
 body.appendChild(canvas);
 
-const entity = 1;
+const entity = 'entity';
 
 Position.register(entity, {
   x: 100,
@@ -36,7 +36,7 @@ InitScript.register(entity, (entityId) => {
 });
 // Velocity.register(entity, { x: 0.3, y: 0, z: 0 });
 
-const ground = 2;
+const ground = 'ground';
 
 Position.register(ground, {
   x: 100,
@@ -49,7 +49,7 @@ Position.register(ground, {
 Render.register(ground, Ground);
 RigidBox2D.register(ground, { isStatic: true });
 
-const text = 3;
+const text = 'text';
 
 Text.register(text, { text: 'Press space to jump' });
 Position.register(text, {
