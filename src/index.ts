@@ -1,4 +1,4 @@
-import { InitScript, Position, Render, RigidBox2D } from './systems';
+import { InitScript, Position, Render, RigidBox2D, Text } from './systems';
 import Pic from '../images/man.jpg';
 import Ground from '../images/wood.jpg';
 import { Body } from 'matter-js';
@@ -30,6 +30,7 @@ InitScript.register(entity, (entityId) => {
     if (e.key == ' ' || e.code == 'Space' || e.keyCode == 32) {
       const body = RigidBox2D.bodies.get(entityId);
       Body.applyForce(body, body.position, { x: 0, y: -200000 });
+      Text.components.get(text).text = 'You have jumped';
     }
   };
 });
@@ -48,6 +49,18 @@ Position.register(ground, {
 Render.register(ground, Ground);
 RigidBox2D.register(ground, { isStatic: true });
 
+const text = 3;
+
+Text.register(text, { text: 'Press space to jump' });
+Position.register(text, {
+  x: 140,
+  y: 200,
+  z: 0,
+  width: 100,
+  height: 100,
+  angle: 0.5
+});
+
 Render.processComponents(1);
 
 let prevTime: number;
@@ -58,9 +71,13 @@ const step = (timeStamp: number) => {
   }
   const timeDelta = (timeStamp - prevTime) / 100;
 
+  const context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
   RigidBox2D.processComponents(timeDelta);
   //Velocity.processComponents(timeDelta);
   Render.processComponents(timeDelta);
+  Text.processComponents();
 
   prevTime = timeStamp;
 
