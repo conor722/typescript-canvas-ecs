@@ -27,7 +27,6 @@ Picture.register(entity, Pic);
 RigidBox2D.register(entity, { density: 0.15 });
 InitScript.register(entity, (entityId) => {
   document.body.onkeyup = function (e) {
-    console.log({ e });
     e.preventDefault();
 
     if (e.key == ' ' || e.code == 'Space' || e.keyCode == 32) {
@@ -38,7 +37,6 @@ InitScript.register(entity, (entityId) => {
     }
   };
 });
-// Velocity.register(entity, { x: 0.3, y: 0, z: 0 });
 
 const ground = 'ground';
 
